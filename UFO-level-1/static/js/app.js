@@ -15,12 +15,16 @@ console.log(tableData);
 //Select the table body
 var tbody = d3.select("tbody")
 
+//clearing the table body
+tbody.html("")
+
 //Loop through data and append rows to the table body
 tableData.forEach(function(UFOsighting) {
     var row = tbody.append("tr");
     //append method to insert table data for each row
-    Object.defineProperties(UFOsighting).forEach(function([key, value] {) console.log(key, value)
-        //append to insert a cell for each value, text to insert data to each cell
+    Object.values(UFOsighting).forEach(function(value) {
+        console.log(value)
+            //append to insert a cell for each value, text to insert data to each cell
         var cell = row.append("td").text(value);
     });
 });
@@ -28,7 +32,7 @@ tableData.forEach(function(UFOsighting) {
 //select the button and create function
 var button = d3.select("#filter-btn");
 
-button on("click", function() {
+button.on("click", function() {
     //select the input element and get the html node
     var inputElement = d3.select(".form-control");
     //get the value property of the input element
@@ -46,8 +50,8 @@ button on("click", function() {
     //loop through filtered data to insert rows and cells for each object
     filteredData.forEach(function(UFOsighting) {
         var row = tbody.append("tr");
-        Object.entries(UFOsighting).forEach(function([key, value]) {
-            var cell = row.append("tr").text(value);
+        Object.values(UFOsighting).forEach(function(value) {
+            var cell = row.append("td").text(value);
         })
     })
 
